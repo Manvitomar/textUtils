@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Text Analyzer</title>
+    <style>
+      body {
+        background-color: #000; 
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        color: white;
+        margin-bottom: 20px;
+      }
+      .form-card {
+        background: #1c1c1c;
+        border-radius: 10px;
+        padding: 25px;
+        width: 90%;
+        max-width: 800px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      }
+      textarea {
+        background: #000;
+        color: #fff;
+        border: 1px solid #555;
+        border-radius: 5px;
+        padding: 10px;
+        resize: none;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 200px;
+      }
+
+      .radio-group {
+        text-align: left;
+        margin-bottom: 10px;
+      }
+      .radio-group input[type="radio"] {
+        display: none;
+      }
+      .radio-group label {
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+        color: #b0b0b0;
+        font-size: 16px;
+        transition: 0.3s;
+      }
+      .radio-group label::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 3px;
+        width: 18px;
+        height: 18px;
+        border-radius: 4px;
+        background: #111;
+        transition: 0.3s;
+      }
+      .radio-group input[type="radio"]:checked + label::before {
+        background-color: #2196f3;
+        border-color: #2196f3;
+      }
+      .radio-group input[type="radio"]:checked + label::after {
+        content: "✔";
+        position: absolute;
+        left: 2px;
+        top: -1px;
+        font-size: 16px;
+        color: white;
+      }
+      .btn-analyze {
+        background-color: #2196f3;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: 0.3s;
+      }
+      .btn-analyze:hover {
+        background-color: #1976d2; 
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="text-center">Welcome to the Text Analyzer -Enter Your Text</h1>
+    <div class="form-card">
+
+      <form action="/analyzer" method="get">
+        <textarea name="text"></textarea>
+
+     <div class="radio-group">
+  <input type="radio" name="operation" id="capitalize" value="capitalize">
+  <label for="capitalize">Capitalize</label>
+</div>
+<div class="radio-group">
+  <input type="radio" name="operation" id="wordCounter" value="wordCounter">
+  <label for="wordCounter">Word Counter</label>
+</div>
+<div class="radio-group">
+  <input type="radio" name="operation" id="spaceremove" value="spaceremove">
+  <label for="spaceremove">Space Remover</label>
+</div>
+<div class="radio-group">
+  <input type="radio" name="operation" id="charCounter" value="charCounter">
+  <label for="charCounter">Character Counter</label>
+</div>
+<div class="radio-group">
+  <input type="radio" name="operation" id="newlineremover" value="newlineremover">
+  <label for="newlineremover">New Line Remover</label>
+</div>
+<div class="radio-group">
+  <input type="radio" name="operation" id="removepunc" value="removepunc">
+  <label for="removepunc">Remove Punctuation</label>
+</div>
+
+        <br>
+        <button type="submit" class="btn-analyze">Analyze Text</button>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

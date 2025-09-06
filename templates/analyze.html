@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Remove Punctuations</title>
+    <style>
+      body {
+        background-color: #0d0d0d; 
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      h1 {
+        color: white;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 2rem;
+      }
+      .result-box {
+        background: linear-gradient(145deg, #1c1c1c, #2a2a2a);
+        border-radius: 12px;
+        padding: 20px;
+        max-width: 700px;
+        width: 100%;
+        box-shadow: 0 0 20px rgba(0,0,0,0.9);
+        text-align: center;
+        word-wrap: break-word;
+      }
+      p {
+        color: #d1d1d1; 
+        font-size: 18px;
+        line-height: 1.6;
+      }
+      .btn {
+        margin-top: 25px;
+        background: #007bff; 
+        color: #fff;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        width:600px;
+      }
+      .btn:hover {
+        background: #0056b3; 
+        transform: scale(1.05);
+      }
+      .btn a {
+        color: white;
+        text-decoration: none;
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.6rem;
+        }
+        p {
+          font-size: 16px;
+        }
+        .result-box {
+          padding: 15px;
+          max-width:450px;
+        }
+        .btn {
+          width: 55%;
+          padding: 12px;
+          font-size: 15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.4rem;
+        }
+        p {
+          font-size: 14px;
+        }
+        .btn {
+          font-size: 14px;
+          padding: 10px;
+          width:50%;
+        }
+        
+        .result-box {
+          padding: 15px;
+          max-width:300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Your Analyzed Text - {{ purpose }}</h1>
+    <div class="result-box">
+      <p>{{ data }}</p>
+    </div>
+    <button class="btn">
+      <a href="http://127.0.0.1:8000/">Go Back</a>
+    </button>
+  </body>
+</html>
