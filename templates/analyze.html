@@ -25,6 +25,7 @@
         font-size: 2rem;
       }
       .result-box {
+        position: relative; 
         background: linear-gradient(145deg, #1c1c1c, #2a2a2a);
         border-radius: 12px;
         padding: 20px;
@@ -39,6 +40,21 @@
         font-size: 18px;
         line-height: 1.6;
       }
+      .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        background: #2a2a2a;
+
+      }
+    
       .btn {
         margin-top: 25px;
         background: #007bff; 
@@ -49,7 +65,7 @@
         font-size: 16px;
         cursor: pointer;
         transition: 0.3s ease;
-        width:600px;
+        width: 250px;
       }
       .btn:hover {
         background: #0056b3; 
@@ -62,50 +78,39 @@
       }
 
       @media (max-width: 768px) {
-        h1 {
-          font-size: 1.6rem;
-        }
-        p {
-          font-size: 16px;
-        }
-        .result-box {
-          padding: 15px;
-          max-width:450px;
-        }
-        .btn {
-          width: 55%;
-          padding: 12px;
-          font-size: 15px;
-        }
+        h1 { font-size: 1.6rem; }
+        p { font-size: 16px; }
+        .result-box { padding: 15px; max-width:450px; }
+        .btn { width: 60%; font-size: 15px; }
       }
 
       @media (max-width: 480px) {
-        h1 {
-          font-size: 1.4rem;
-        }
-        p {
-          font-size: 14px;
-        }
-        .btn {
-          font-size: 14px;
-          padding: 10px;
-          width:50%;
-        }
-        
-        .result-box {
-          padding: 15px;
-          max-width:300px;
-        }
+        h1 { font-size: 1.4rem; }
+        p { font-size: 14px; }
+        .btn { font-size: 14px; padding: 10px; width:70%; }
+        .result-box { padding: 15px; max-width:300px; }
       }
     </style>
   </head>
   <body>
     <h1>Your Analyzed Text - {{ purpose }}</h1>
+    
     <div class="result-box">
-      <p>{{ data }}</p>
+      <button class="copy-btn" onclick="copyResult()">Copy</button>
+      <p id="resultText">{{ data }}</p>
     </div>
-    <button class="btn">
+
+    <button class="btn" style="margin-top: 20px;">
       <a href="http://127.0.0.1:8000/">Go Back</a>
     </button>
+
+    <script>
+      function copyResult() {
+        const text = document.getElementById("resultText").innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          alert("Copy Text");
+        });
+      }
+    </script>
   </body>
 </html>

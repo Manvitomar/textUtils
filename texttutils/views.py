@@ -60,68 +60,90 @@ def analyze(request):
      return render(request, 'analyze.html', params)
 
     else:
-       return HttpResponse('''<!doctype html>
+     return HttpResponse('''<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Custom Modal</title>
+    <title>Error</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-      body {
-        height: 100vh;
+      body, html {
         margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #000; /* Black background */
-      }
-      .modal-content {
-        background: #1c1c1c; /* Dark grey/black modal */
-        color: #fff;
-        border-radius: 12px;
-        box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
-      }
-      .modal-body h5 {
-        color: #2196f3; /* Blue heading */
-        font-weight: bold;
-      }
-      .modal-body p {
-        color: #b0b0b0; /* Light grey text */
-      }
-      .modal-footer {
-        border-top: none;
-        background-color: #111;
-      }
-      .btn-custom {
-        flex: 1;
-        padding: 12px;
-        font-size: 16px;
-        border: none;
-        border-radius: 0;
-        transition: 0.3s;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
       }
 
-      .btn-cancel {
-        background-color: #333;
+      .cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #000;
         color: #fff;
+        text-align: center;
+        padding: 20px;
       }
-      .btn-cancel:hover {
-        background-color: #555;
+
+      .box {
+        background-color: #1c1c1c;
+        padding: 50px 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        max-width: 90%;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        font-size: 2rem;
+      }
+
+      .btn {
+        margin-top: 30px;
+        background-color: #007bff;
+        color: #fff;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 250px;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+
+      .btn a {
+        color: white;
+        text-decoration: none;
+        display: block;
+      }
+
+      @media (max-width: 500px) {
+        .box {
+          padding: 30px 20px;
+        }
+
+        .btn {
+          width: 80%;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body text-center p-4">
-          <h5>Error</h5>
-          <p>Something went wrong. Please try again later.</p>
-        </div>
-        <div class="modal-footer p-0">
-          <button class="btn-custom btn-cancel"><a href='http://127.0.0.1:8000/'>Go Back</button>
-        </div>
+    <div class="cont">
+      <div class="box">
+        <h2>Error</h2>
+        <p>Something went wrong. Please try again.</p>
       </div>
+      <button class="btn">
+        <a href="http://127.0.0.1:8000/">Go Back</a>
+      </button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

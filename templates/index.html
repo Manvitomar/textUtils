@@ -27,6 +27,11 @@
         max-width: 800px;
         box-shadow: 0 0 20px rgba(0,0,0,0.8);
       }
+      .textarea-container {
+        position: relative;
+        width: 100%;
+        margin-bottom: 20px;
+      }
       textarea {
         background: #000;
         color: #fff;
@@ -34,11 +39,23 @@
         border-radius: 5px;
         padding: 10px;
         resize: none;
-        margin-bottom: 20px;
         width: 100%;
         height: 200px;
       }
-
+      .btn-copy {
+        background-color:black;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+        border: none;
+        padding: 5px 12px;
+        font-size: 14px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+     
       .radio-group {
         text-align: left;
         margin-bottom: 10px;
@@ -67,7 +84,6 @@
       }
       .radio-group input[type="radio"]:checked + label::before {
         background-color: #2196f3;
-        border-color: #2196f3;
       }
       .radio-group input[type="radio"]:checked + label::after {
         content: "✔";
@@ -92,41 +108,54 @@
     </style>
   </head>
   <body>
-    <h1 class="text-center">Welcome to the Text Analyzer -Enter Your Text</h1>
+    <h1 class="text-center">Welcome to the Text Analyzer - Enter Your Text</h1>
     <div class="form-card">
-
       <form action="/analyzer" method="get">
-        <textarea name="text"></textarea>
+        
+        <div class="textarea-container">
+          <textarea id="textInput" name="text"></textarea>
+          <button type="button" class="btn-copy" onclick="copyText()">Copy</button>
+        </div>
 
-     <div class="radio-group">
-  <input type="radio" name="operation" id="capitalize" value="capitalize">
-  <label for="capitalize">Capitalize</label>
-</div>
-<div class="radio-group">
-  <input type="radio" name="operation" id="wordCounter" value="wordCounter">
-  <label for="wordCounter">Word Counter</label>
-</div>
-<div class="radio-group">
-  <input type="radio" name="operation" id="spaceremove" value="spaceremove">
-  <label for="spaceremove">Space Remover</label>
-</div>
-<div class="radio-group">
-  <input type="radio" name="operation" id="charCounter" value="charCounter">
-  <label for="charCounter">Character Counter</label>
-</div>
-<div class="radio-group">
-  <input type="radio" name="operation" id="newlineremover" value="newlineremover">
-  <label for="newlineremover">New Line Remover</label>
-</div>
-<div class="radio-group">
-  <input type="radio" name="operation" id="removepunc" value="removepunc">
-  <label for="removepunc">Remove Punctuation</label>
-</div>
+        <div class="radio-group">
+          <input type="radio" name="operation" id="capitalize" value="capitalize">
+          <label for="capitalize">Capitalize</label>
+        </div>
+        <div class="radio-group">
+          <input type="radio" name="operation" id="wordCounter" value="wordCounter">
+          <label for="wordCounter">Word Counter</label>
+        </div>
+        <div class="radio-group">
+          <input type="radio" name="operation" id="spaceremove" value="spaceremove">
+          <label for="spaceremove">Space Remover</label>
+        </div>
+        <div class="radio-group">
+          <input type="radio" name="operation" id="charCounter" value="charCounter">
+          <label for="charCounter">Character Counter</label>
+        </div>
+        <div class="radio-group">
+          <input type="radio" name="operation" id="newlineremover" value="newlineremover">
+          <label for="newlineremover">New Line Remover</label>
+        </div>
+        <div class="radio-group">
+          <input type="radio" name="operation" id="removepunc" value="removepunc">
+          <label for="removepunc">Remove Punctuation</label>
+        </div>
 
         <br>
         <button type="submit" class="btn-analyze">Analyze Text</button>
       </form>
     </div>
+
+    <script>
+      function copyText() {
+        const textArea = document.getElementById("textInput");
+        textArea.select();
+        textArea.setSelectionRange(0, 99999); 
+        navigator.clipboard.writeText(textArea.value);
+        alert("Copy Text");
+      }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>
